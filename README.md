@@ -1,7 +1,7 @@
 <p align="center">
     <a href="hhttps://www.apache.org/licenses/LICENSE-2.0" alt="GitHub tag">
         <img src="https://img.shields.io/github/license/tomarv2/terraform-azure-role-assignment" /></a>
-    <a href="https://img.shields.io/github/v/tag/tomarv2/terraform-azure-assignment" alt="GitHub tag">
+    <a href="https://img.shields.io/github/v/tag/tomarv2/terraform-azure-role-assignment" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-azure-assignment" /></a>
     <a href="https://img.shields.io/stackexchange/stackoverflow/r/6679867" alt="Stack Exchange reputation">
         <img src="https://img.shields.io/stackexchange/stackoverflow/r/6679867" /></a>
