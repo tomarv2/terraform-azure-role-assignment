@@ -1,4 +1,18 @@
-[![](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+<p align="center">
+    <a href="hhttps://www.apache.org/licenses/LICENSE-2.0" alt="GitHub tag">
+        <img src="https://img.shields.io/github/license/tomarv2/terraform-azure-role-assignment" /></a>
+    <a href="https://img.shields.io/github/v/tag/tomarv2/terraform-azure-assignment" alt="GitHub tag">
+        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-azure-assignment" /></a>
+    <a href="https://img.shields.io/stackexchange/stackoverflow/r/6679867" alt="Stack Exchange reputation">
+        <img src="https://img.shields.io/stackexchange/stackoverflow/r/6679867" /></a>
+    <a href="https://discord.gg/XH975bzN">
+        <img src="https://img.shields.io/discord/813961944443912223?logo=discord"
+            alt="chat on Discord"></a>
+    <a href="https://twitter.com/intent/follow?screen_name=varuntomar2019">
+        <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"
+            alt="follow on Twitter"></a>
+</p>
+
 # Azure Role Assignment module
 
 Terraform to create Role Assignment
