@@ -33,16 +33,16 @@ jobs:
         with:
           terraform_version: 0.14.7
 
-      - name: Download Go Modules
-        working-directory: tests
-        run: go mod download
-
-      - name: Set ssh keys for github remote download
-        working-directory: tests
-        run: |
-          mkdir ~/.ssh
-          echo "${{ secrets.SSH_GITHUB }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+#      - name: Download Go Modules
+#        working-directory: tests
+#        run: go mod download
+#
+#      - name: Set ssh keys for github remote download
+#        working-directory: tests
+#        run: |
+#          mkdir ~/.ssh
+#          echo "${{ secrets.SSH_GITHUB }}" > ~/.ssh/id_rsa
+#          chmod 600 ~/.ssh/id_rsa
 
 #      - name: Run Go Tests
 #        working-directory: tests
