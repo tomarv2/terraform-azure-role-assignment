@@ -32,5 +32,4 @@ jobs:
           api-key: ${{ secrets.BRIDGECREW_API_KEY }}
           directory: "."
           soft_fail: false
-          #skip_check: CKV_AWS_50
           output_format: json
