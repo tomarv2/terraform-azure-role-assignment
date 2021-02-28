@@ -49,8 +49,3 @@ variable "role_name" {
   default     = "Reader"
   description = "The role to assign"
 }
-
-//variable "custom_role_actions" {
-//  default = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
-//  description = "Action to be assigned to role"
-//}
