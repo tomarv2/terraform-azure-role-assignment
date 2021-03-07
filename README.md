@@ -13,9 +13,7 @@
         <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"></a>
 </p>
 
-# Azure Role Assignment module
-
-Terraform to create Role Assignment
+# Terraform module to create Azure Role Assignment
 
 ## Versions
 
@@ -52,32 +50,55 @@ export TF_AZURE_CONTAINER=tfstate # Output of remote_state.sh
 export ARM_ACCESS_KEY=xxxxxxxxxx # Output of remote_state.sh
 ```  
 
-- Update:
-```
-example/custom/sample.tfvars
-```
-
-- Change to: 
-```
-example/base
-``` 
+- Make required change to `examples` directory 
 
 - Run and verify the output before deploying:
 ```
-tf -cloud aws plan -var-file <path to .tfvars file> -var "subscription_id=<>" \
+tf -cloud azure plan -var-file <path to .tfvars file> -var "subscription_id=<>" \
 -var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
 ```
 
 - Run below to deploy:
 ```
-tf -cloud aws apply -var-file <path to .tfvars file> -var "subscription_id=<>" \
+tf -cloud azure apply -var-file <path to .tfvars file> -var "subscription_id=<>" \
 -var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
 ```
 
 - Run below to destroy:
 ```
-tf -cloud aws destroy -var-file <path to .tfvars file> -var "subscription_id=<>" \
+tf -cloud azure destroy -var-file <path to .tfvars file> -var "subscription_id=<>" \
 -var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
+```
+
+> ❗️ **Important** - Two variables are required for using `tf` package:
+>
+> - teamid
+> - prjid
+>
+> These variables are required to set backend path in the remote storage.
+> Variables can be defined using:
+>
+> - As `inline variables` e.g.: `-var='teamid=demo-team' -var='prjid=demo-project'`
+> - Inside `.tfvars` file e.g.: `-var-file=<tfvars file location> `
+>
+> For more information refer to [Terraform documentation](https://www.terraform.io/docs/language/values/variables.html)
+
+```
+module "role_assignment" {
+  source = "../"
+
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
+  email           = "demo@demo.com"
+  principal_id    = "principal_id"
+  scopes          = "scopes"
+  #-----------------------------------------------
+  # Note: Do not change teamid and prjid once set.
+  teamid = var.teamid
+  prjid  = var.prjid
+}
 ```
 
 Please refer to example directory [link](example) for references.
