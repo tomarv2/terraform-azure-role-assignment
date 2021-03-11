@@ -1,4 +1,6 @@
 <p align="center">
+    <a href="https://github.com/tomarv2/terraform-azure-role-assignment/actions/workflows/security_scans.yml" alt="Security Scans">
+        <img src="https://github.com/tomarv2/terraform-azure-role-assignment/actions/workflows/security_scans.yml/badge.svg?branch=main" /></a>
     <a href="https://www.apache.org/licenses/LICENSE-2.0" alt="license">
         <img src="https://img.shields.io/github/license/tomarv2/terraform-azure-role-assignment" /></a>
     <a href="https://github.com/tomarv2/terraform-azure-role-assignment/tags" alt="GitHub tag">
@@ -54,20 +56,17 @@ export ARM_ACCESS_KEY=xxxxxxxxxx # Output of remote_state.sh
 
 - Run and verify the output before deploying:
 ```
-tf -cloud azure plan -var-file <path to .tfvars file> -var "subscription_id=<>" \
--var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
+tf -cloud azure plan -var "subscription_id=<>" -var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
 ```
 
 - Run below to deploy:
 ```
-tf -cloud azure apply -var-file <path to .tfvars file> -var "subscription_id=<>" \
--var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
+tf -cloud azure apply -var "subscription_id=<>" -var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
 ```
 
 - Run below to destroy:
 ```
-tf -cloud azure destroy -var-file <path to .tfvars file> -var "subscription_id=<>" \
--var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
+tf -cloud azure destroy -var "subscription_id=<>" -var "client_id=<>" -var "client_secret=<>" -var "tenant_id=<>"
 ```
 
 > ❗️ **Important** - Two variables are required for using `tf` package:
@@ -101,7 +100,7 @@ module "role_assignment" {
 }
 ```
 
-Please refer to example directory [link](example) for references.
+Please refer to examples directory [link](examples) for references.
 
 ## Inputs
 
