@@ -88,7 +88,6 @@ module "role_assignment" {
   client_secret   = var.client_secret
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
-  email           = "demo@demo.com"
   principal_id    = "principal_id"
   scopes          = "scopes"
   #-----------------------------------------------
@@ -106,7 +105,6 @@ Please refer to examples directory [link](examples) for references.
 |------|-------------|------|---------|:--------:|
 | client\_id | n/a | `any` | n/a | yes |
 | client\_secret | n/a | `any` | n/a | yes |
-| email | email address to be used for tagging (suggestion: use group email address) | `any` | n/a | yes |
 | end\_date | The relative duration or RFC3339 date after which the password expire. | `string` | `null` | no |
 | password | A password for the service principal. | `string` | `""` | no |
 | principal\_id | Principal id to which this role should be assigned. | `any` | n/a | yes |
