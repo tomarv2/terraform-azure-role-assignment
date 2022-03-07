@@ -1,15 +1,10 @@
-variable "teamid" {
-  description = "(Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply'"
+variable "principal_id" {
+  description = "MSI principal  Id"
+  type        = string
 }
 
-variable "prjid" {
-  description = "(Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
+variable "scopes" {
+  type        = string #list(any)
+  default     = null   #[]
+  description = "A list of scopes the role assignment applies to."
 }
-
-variable "subscription_id" {}
-
-variable "client_id" {}
-
-variable "client_secret" {}
-
-variable "tenant_id" {}
