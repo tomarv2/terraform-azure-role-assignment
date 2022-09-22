@@ -125,16 +125,11 @@ Please refer to examples directory [link](examples) for references.
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.21.1 |
+No requirements.
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.21.1 |
+No providers.
 
 ## Modules
 
@@ -142,23 +137,13 @@ No modules.
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [azurerm_role_assignment.role](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
-| [azurerm_subscription.primary](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
+No resources.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_roles_config"></a> [roles\_config](#input\_roles\_config) | Roles configuration | `map(any)` | `{}` | no |
+No inputs.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_id"></a> [id](#output\_id) | The Role Assignment ID. |
-| <a name="output_principal_id"></a> [principal\_id](#output\_principal\_id) | Principal id to which this role should be assigned |
-| <a name="output_principal_type"></a> [principal\_type](#output\_principal\_type) | The type of the principal\_id, e.g. User, Group, Service Principal, Application, etc. |
-| <a name="output_scope"></a> [scope](#output\_scope) | A list of scopes the role assignment applies |
+No outputs.
 <!-- END_TF_DOCS -->
