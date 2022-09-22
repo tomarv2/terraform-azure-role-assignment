@@ -1,25 +1,19 @@
-output "role_principal_id" {
+output "principal_id" {
   description = "Principal id to which this role should be assigned"
-  value       = azurerm_role_assignment.role.principal_id
+  value       = [for role in azurerm_role_assignment.role : role.principal_id]
 }
 
-output "role_id" {
-  description = "Id of the role created"
-  value       = azurerm_role_assignment.role.id
+output "id" {
+  description = "The Role Assignment ID."
+  value       = [for role in azurerm_role_assignment.role : role.id]
 }
 
-output "role_scope" {
+output "scope" {
   description = "A list of scopes the role assignment applies"
-  value       = azurerm_role_assignment.role.scope
+  value       = [for role in azurerm_role_assignment.role : role.scope]
 }
 
 output "principal_type" {
-  description = "Principal type"
-
-  value = azurerm_role_assignment.role.principal_type
-}
-
-output "role_definition_id" {
-  description = "Role definition Id"
-  value       = azurerm_role_assignment.role.role_definition_id
+  description = "The type of the principal_id, e.g. User, Group, Service Principal, Application, etc."
+  value       = [for role in azurerm_role_assignment.role : role.principal_type]
 }

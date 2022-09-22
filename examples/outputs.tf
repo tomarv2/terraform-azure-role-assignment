@@ -1,11 +1,11 @@
-output "role_id" {
+output "id" {
   description = "Role Id"
-  value       = module.role_assignment.role_id
+  value       = module.role_assignment.id
 }
 
-output "role_scope" {
+output "scope" {
   description = "A list of scopes the role assignment applies"
-  value       = module.role_assignment.role_scope
+  value       = module.role_assignment.scope
 }
 
 output "principal_type" {
@@ -13,12 +13,7 @@ output "principal_type" {
   value       = module.role_assignment.principal_type
 }
 
-output "role_principal_id" {
+output "principal_id" {
   description = "Principal id to which this role should be assigned"
-  value       = module.role_assignment.role_principal_id
-}
-
-output "role_definition_id" {
-  description = "Role definition Id"
-  value       = module.role_assignment.role_definition_id
+  value       = module.role_assignment.principal_id
 }
