@@ -18,7 +18,7 @@
 ### Versions
 
 - Module tested for Terraform 1.0.1.
-- Azure provider version [2.98](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
+- Azure provider version [3.21.1](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
 - `main` branch: Provider versions not pinned to keep up with Terraform releases
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-azure-role-assignment/tags" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-azure-role-assignment" /></a> in your releases)
@@ -73,18 +73,50 @@ tf -c=azure apply -var='teamid=foo' -var='prjid=bar'
 tf -c=azure destroy -var='teamid=foo' -var='prjid=bar'
 ```
 **Note:** Read more on [tfremote](https://github.com/tomarv2/tfremote)
+
 #### Role Assignment
 ```
+terraform {
+  required_version = ">= 1.0.1"
+  required_providers {
+    azurerm = {
+      version = "~> 3.21.1"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
+data "azurerm_subscription" "primary" {}
+
+locals {
+  role_definition_names = {
+    "<storage_account_id>" = {
+      role_definition_name = "Storage Queue Data Contributor"
+      principal_id         = "<msi_principal_id>"
+    },
+    (data.azurerm_subscription.primary.id) = {
+      role_definition_name = "Contributor"
+    }
+  }
+}
+
 module "role_assignment" {
   source = "../"
 
+  for_each = local.role_definition_names
 
-  principal_id    = "principal_id"
-  scopes          = "scopes"
-  #-----------------------------------------------
-  # Note: Do not change teamid and prjid once set.
-  teamid = var.teamid
-  prjid  = var.prjid
+  roles_config = {
+    "demo_role" = {
+      scope                = each.key
+      principal_id         = "<msi_principal_id>"
+      role_definition_name = each.value.role_definition_name
+      description          = try(each.value.description, "Sample role")
+    }
+  }
+
 }
 ```
 
@@ -96,13 +128,13 @@ Please refer to examples directory [link](examples) for references.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 2.98 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.21.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 2.98 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.21.1 |
 
 ## Modules
 
@@ -119,17 +151,14 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_principal_id"></a> [principal\_id](#input\_principal\_id) | Principal id to which this role should be assigned | `string` | n/a | yes |
-| <a name="input_role_name"></a> [role\_name](#input\_role\_name) | The role to assign | `string` | `"Reader"` | no |
-| <a name="input_scopes"></a> [scopes](#input\_scopes) | A list of scopes the role assignment applies | `string` | `null` | no |
+| <a name="input_roles_config"></a> [roles\_config](#input\_roles\_config) | Roles configuration | `map(any)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_principal_type"></a> [principal\_type](#output\_principal\_type) | Principal type |
-| <a name="output_role_definition_id"></a> [role\_definition\_id](#output\_role\_definition\_id) | Role definition Id |
-| <a name="output_role_id"></a> [role\_id](#output\_role\_id) | Id of the role created |
-| <a name="output_role_principal_id"></a> [role\_principal\_id](#output\_role\_principal\_id) | Principal id to which this role should be assigned |
-| <a name="output_role_scope"></a> [role\_scope](#output\_role\_scope) | A list of scopes the role assignment applies |
+| <a name="output_id"></a> [id](#output\_id) | The Role Assignment ID. |
+| <a name="output_principal_id"></a> [principal\_id](#output\_principal\_id) | Principal id to which this role should be assigned |
+| <a name="output_principal_type"></a> [principal\_type](#output\_principal\_type) | The type of the principal\_id, e.g. User, Group, Service Principal, Application, etc. |
+| <a name="output_scope"></a> [scope](#output\_scope) | A list of scopes the role assignment applies |
 <!-- END_TF_DOCS -->
