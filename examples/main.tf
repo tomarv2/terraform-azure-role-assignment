@@ -30,7 +30,7 @@ module "role_assignment" {
 
   for_each = local.role_definition_names
 
-  roles_config = {
+  config = {
     "demo_role" = {
       scope                = each.key
       principal_id         = "<msi_principal_id>"

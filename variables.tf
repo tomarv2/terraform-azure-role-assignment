@@ -1,4 +1,4 @@
-variable "roles_config" {
+variable "config" {
   description = "Roles configuration"
   type        = map(any)
   default     = {}
