@@ -1,7 +1,7 @@
 data "azurerm_subscription" "primary" {}
 
 resource "azurerm_role_assignment" "role" {
-  for_each = var.roles_config != null ? var.roles_config : {}
+  for_each = var.config
 
   scope                = try(each.value.scope, data.azurerm_subscription.primary.id)
   role_definition_id   = try(each.value.role_definition_id, null)
